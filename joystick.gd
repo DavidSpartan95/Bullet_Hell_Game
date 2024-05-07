@@ -1,0 +1,34 @@
+extends Area2D
+
+# Using the @onready annotation to ensure BigCircle is initialized when it's available in the scene tree
+@onready var big_circle = $BigCircle
+@onready var small_circle = $BigCircle/SmallCircle
+
+@onready var max_distance = $CollisionShape2D.shape.radius
+
+var touched = false
+func _ready():
+	# Position the Joystick (Area2D) to the bottom right corner of the screen
+	position = Vector2(get_viewport_rect().size.x - max_distance, get_viewport_rect().size.y - max_distance)
+
+func _input(event):
+	if event is InputEventScreenTouch:
+		var distance = event.position.distance_to(big_circle.global_position)
+		if not touched:
+			if distance<max_distance:
+				touched = true
+		else:
+			small_circle.position = Vector2(0,0)
+			touched = false
+
+func _process(delta):
+	if touched:
+		small_circle.global_position = get_global_mouse_position()
+		#small_circle.position = big_circle.position + (small_circle.position - big_circle.position).clamped(max_distance)
+		
+func get_velo():
+	var joy_velo = Vector2(0,0)
+	joy_velo.x = small_circle.position.x / max_distance
+	joy_velo.y = small_circle.position.y / max_distance
+	return joy_velo
+
