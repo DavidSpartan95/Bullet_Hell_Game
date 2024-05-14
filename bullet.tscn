@@ -8,11 +8,11 @@ radius = 7.2111
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_ofql3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g2tug")
-one_way_collision = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

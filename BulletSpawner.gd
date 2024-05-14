@@ -8,5 +8,4 @@ func _on_timeout():
 	new_bullet.position = player.position
 	add_child(new_bullet)
 	
-	
 	wait_time = 1

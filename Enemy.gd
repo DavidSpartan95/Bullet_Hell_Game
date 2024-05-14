@@ -9,11 +9,16 @@ func _process(delta):
 	if player:
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
-			print(collision.get_class())
-			if collision.get_collider() == player:
+			var collider = collision.get_collider()
+			if collider == player:
 				print("Collision with player detected")
 				get_tree().reload_current_scene()
 				return
+			elif  collider.is_in_group("Bullet"):
+				queue_free()  # Remove this bullet instance
+				collider.queue_free()  # Remove the bullet instance
+				
+			
 	
 		# Calculate the direction to the player
 		var direction = (player.global_position - global_position).normalized()
@@ -21,4 +26,3 @@ func _process(delta):
 		# Move the enemy towards the player
 		move_and_slide()
 		
-
