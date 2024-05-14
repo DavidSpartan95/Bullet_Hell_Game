@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
-
-const SPEED = 100.0
-
+const SPEED = 250.0
+@onready var direction: Vector2
 func _process(delta):
 	
 		# Calculate the direction to the player
-		var direction = Vector2(10,10)
-		velocity = direction * SPEED
+		velocity = direction.normalized() * SPEED
 		# Move the enemy towards the player
 		move_and_slide()
 
