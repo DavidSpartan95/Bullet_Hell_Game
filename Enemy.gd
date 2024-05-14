@@ -9,6 +9,7 @@ func _process(delta):
 	if player:
 		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
+			print(collision.get_class())
 			if collision.get_collider() == player:
 				print("Collision with player detected")
 				get_tree().reload_current_scene()
@@ -20,9 +21,4 @@ func _process(delta):
 		# Move the enemy towards the player
 		move_and_slide()
 		
-func _on_Enemy_body_entered(body):
-	print("test")
-	if body.name == "player":
-		# Collision with player detected, trigger game reset
-		get_tree().reload_current_scene()  # Reset the game
 

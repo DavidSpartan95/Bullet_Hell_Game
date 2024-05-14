@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvvu6savlfe4p"]
+[gd_scene load_steps=9 format=3 uid="uid://bvvu6savlfe4p"]
 
 [ext_resource type="Texture2D" uid="uid://2ceof6wbcdbi" path="res://Img/Green.png" id="1_2qbkg"]
 [ext_resource type="Texture2D" uid="uid://5em6v6xy7nw3" path="res://Img/Terrain (16x16).png" id="2_i3lhd"]
 [ext_resource type="PackedScene" uid="uid://yvrdrlxpolr0" path="res://player.tscn" id="3_03jm4"]
 [ext_resource type="Script" path="res://player.gd" id="4_11qlx"]
-[ext_resource type="Script" path="res://Timer.gd" id="6_v4sef"]
+[ext_resource type="Script" path="res://EnemySpawner.gd" id="5_ke3m7"]
+[ext_resource type="Script" path="res://BulletSpawner.gd" id="6_u6fji"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p6id0"]
 texture = ExtResource("2_i3lhd")
@@ -182,8 +183,13 @@ layer_0/tile_data = PackedInt32Array(1114112, 851968, 1, 1179648, 851968, 2, 111
 position = Vector2(670, 504)
 script = ExtResource("4_11qlx")
 
-[node name="Timer" type="Timer" parent="Node"]
+[node name="EnemySpawner" type="Timer" parent="Node"]
 autostart = true
-script = ExtResource("6_v4sef")
+script = ExtResource("5_ke3m7")
 
-[connection signal="timeout" from="Node/Timer" to="Node/Timer" method="_on_timeout"]
+[node name="BulletSpawner" type="Timer" parent="Node"]
+autostart = true
+script = ExtResource("6_u6fji")
+
+[connection signal="timeout" from="Node/EnemySpawner" to="Node/EnemySpawner" method="_on_timeout"]
+[connection signal="timeout" from="Node/BulletSpawner" to="Node/BulletSpawner" method="_on_timeout"]
