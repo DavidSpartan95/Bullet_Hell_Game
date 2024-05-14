@@ -13,7 +13,5 @@ func _on_timeout():
 		new_bullet.direction = player.direction
 		lastDirection = player.direction
 		
-	
 	add_child(new_bullet)
-	print(player.direction)
 	wait_time = 1

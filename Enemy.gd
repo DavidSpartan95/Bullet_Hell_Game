@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var enemy_move_speed = 50
 # Player's node path (adjust as necessary)
 @onready var player: Node
-
+var enemy_point = 1
 func _process(delta):
 	if player:
 		for i in range(get_slide_collision_count()):
@@ -15,8 +15,10 @@ func _process(delta):
 				get_tree().reload_current_scene()
 				return
 			elif  collider.is_in_group("Bullet"):
-				queue_free()  # Remove this bullet instance
+				queue_free()  # Remove this enemy instance
 				collider.queue_free()  # Remove the bullet instance
+				player.kills = player.kills + enemy_point
+				enemy_point = 0
 				
 			
 	

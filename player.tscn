@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://yvrdrlxpolr0"]
+[gd_scene load_steps=5 format=3 uid="uid://yvrdrlxpolr0"]
 
 [ext_resource type="Texture2D" uid="uid://vuu0gmuhejnh" path="res://Img/Jump (32x32).png" id="1_w22d5"]
 [ext_resource type="PackedScene" uid="uid://c3nersm76qugc" path="res://joystick.tscn" id="2_1uaag"]
+[ext_resource type="Script" path="res://KillCountText.gd" id="3_nbol8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm0r5"]
 size = Vector2(21, 28)
@@ -22,3 +23,19 @@ shape = SubResource("RectangleShape2D_fm0r5")
 [node name="Joystick" parent="UI" instance=ExtResource("2_1uaag")]
 texture_filter = 1
 position = Vector2(1028, 520)
+
+[node name="KillCountText" type="RichTextLabel" parent="UI"]
+texture_filter = 1
+offset_right = 200.0
+offset_bottom = 50.0
+scale = Vector2(0.564, 0.5)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/mono_font_size = 20
+bbcode_enabled = true
+text = "Kills: 0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+tab_size = 20
+context_menu_enabled = true
+script = ExtResource("3_nbol8")
