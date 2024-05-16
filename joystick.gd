@@ -1,6 +1,5 @@
 extends Area2D
 
-# Using the @onready annotation to ensure BigCircle is initialized when it's available in the scene tree
 @onready var big_circle = $BigCircle
 @onready var small_circle = $BigCircle/SmallCircle
 
@@ -8,7 +7,7 @@ extends Area2D
 
 var touched = false
 func _ready():
-	# Position the Joystick (Area2D) to the bottom right corner of the screen
+	# Position the Joystick to the bottom right corner of the screen 
 	position = Vector2(get_viewport_rect().size.x - max_distance*2, get_viewport_rect().size.y - max_distance*2)
 
 func _input(event):
@@ -24,7 +23,6 @@ func _input(event):
 func _process(delta):
 	if touched:
 		small_circle.global_position = get_global_mouse_position()
-		#small_circle.position = big_circle.position + (small_circle.position - big_circle.position).clamped(max_distance)
 		
 func get_velo():
 	var joy_velo = Vector2(0,0)
