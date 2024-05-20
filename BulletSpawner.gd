@@ -14,4 +14,7 @@ func _on_timeout():
 		lastDirection = player.direction
 		
 	add_child(new_bullet)
-	wait_time = 1
+	var speedincrease = ( 0.05 * (player.kills + 1)) 
+	if speedincrease > 0.9:
+		speedincrease = 0.9
+	wait_time = 1 - speedincrease

@@ -15,7 +15,7 @@ func _process(delta):
 				print("Collision with player detected")
 				get_tree().reload_current_scene()
 				return
-			elif  collider.is_in_group("Bullet"):
+			elif  collider.is_in_group("Bullet") != null:
 				queue_free()  # Remove this enemy instance
 				collider.queue_free()  # Remove the bullet instance
 				player.kills = player.kills + enemy_point
