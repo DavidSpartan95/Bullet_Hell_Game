@@ -7,7 +7,7 @@ extends Area2D
 
 var touched = false
 func _ready():
-	# Position the Joystick to the bottom right corner of the screen 
+	# Position the Joystick to the bottom right corner of the screen with some padding
 	position = Vector2(get_viewport_rect().size.x - max_distance*2, get_viewport_rect().size.y - max_distance*2)
 
 func _input(event):

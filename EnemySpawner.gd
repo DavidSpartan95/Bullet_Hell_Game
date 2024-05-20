@@ -2,14 +2,12 @@ extends Timer
 
 var enemy1 = preload("res://Enemy.tscn")
 @onready var player = get_node("../CharacterBody2D")
+
 func _on_timeout():
 	
-	randomize()
-	var enemys = [enemy1]
-	var kinds = enemys[randi()% enemys.size()]
-	var enemy = kinds.instantiate()
+	var enemy = enemy1.instantiate()
 	enemy.player = player
-# Ensure the enemy is at least 500 points away on both x and y coordinates
+	# Ensure the enemy is at least 500 points away on both x and y coordinates
 	var x_offset = randf_range(500, 990)
 	var y_offset = randf_range(500, 590)
 	#Randomize if the enemy spawns left or right side
